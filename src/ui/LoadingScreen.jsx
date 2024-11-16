@@ -138,7 +138,7 @@ export default function LoadingScreen() {
       {/* MENU */}
       <motion.section
         animate={screen === "menu" ? "visible" : "hidden"}
-        className={`absolute z-20 top-0 left-0 text-white  h-full flex lg:items-center items-end p-6 lg:w-1/2 justify-center  sm:w-full 
+        className={`absolute  z-20 lg:top-0 bottom-0 sm:bottom-0 left-0 text-white lg:h-full flex  lg:items-center items-end p-6 lg:w-1/2 justify-center  sm:w-full 
           ${screen === "menu" ? "pointer-events-auto" : "pointer-events-none"}`}
       >
         <motion.div

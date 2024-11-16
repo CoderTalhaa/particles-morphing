@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useMemo } from "react";
 import { useFrame, useThree } from "@react-three/fiber";
-import { Stars, useGLTF } from "@react-three/drei";
+import { OrbitControls, Stars, useGLTF } from "@react-three/drei";
 import * as THREE from "three";
 import particlesVertexShader from "./shaders/vertex.glsl";
 import particlesFragmentShader from "./shaders/fragment.glsl";
@@ -126,7 +126,6 @@ export default function ParticlesExperience() {
 
   useEffect(() => {
     morph(index);
-    console.log(index);
   }, [index]);
 
   // Define uniforms for shader material
@@ -187,6 +186,15 @@ export default function ParticlesExperience() {
 
   return (
     <>
+      <OrbitControls
+        minPolarAngle={Math.PI / 4} // Limit up rotation (45 degrees)
+        maxPolarAngle={Math.PI / 1.5} // Limit down rotation (120 degrees)
+        minAzimuthAngle={-Math.PI / 4} // Limit left rotation (-45 degrees)
+        maxAzimuthAngle={Math.PI / 4}
+        minDistance={15} // Minimum zoom (closest)
+        maxDistance={25} // Maximum zoom (farthest)
+        enablePan={false} // Disable panning (optional)
+      />
       <Stars
         radius={100}
         depth={50}

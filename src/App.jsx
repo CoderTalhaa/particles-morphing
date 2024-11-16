@@ -1,8 +1,7 @@
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Canvas } from "@react-three/fiber";
 import Experience from "./three/Experience";
 import { Suspense, useEffect } from "react";
-import { OrbitControls, useProgress } from "@react-three/drei";
-import { Leva } from "leva";
+import { useProgress } from "@react-three/drei";
 import LoadingScreen from "./ui/LoadingScreen";
 import ScreenTransition from "./three/components/ScreenTransition";
 import { useStore } from "./store/useStore";
@@ -19,11 +18,7 @@ function App() {
   }, [progress]);
 
   return (
-    <>
-      {/* <Leva /> */}
-      <div className="absolute top-5 left-0 flex justify-center w-full z-10">
-        <img src="/image2.svg" alt="Logo" />
-      </div>
+    <div className="h-svh w-full overflow-hidden">
       <LoadingScreen />
       <Canvas
         camera={{ position: [0, 1, 18], fov: 35 }}
@@ -39,9 +34,8 @@ function App() {
         <Suspense fallback={null}>
           <Experience />
         </Suspense>
-        <OrbitControls />
       </Canvas>
-    </>
+    </div>
   );
 }
 
